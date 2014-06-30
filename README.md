@@ -31,3 +31,4 @@ var controller = new VsSticky($container, 'h3.my-sticky-header-selector');
 
 `examples/example1-simple-scroll.html` shows a simple self-contained usage example.
 
+To test: open this file in the browser.
