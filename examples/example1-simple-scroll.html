@@ -7,20 +7,22 @@
     .sticky-header-container {
       width: 200px;
       margin: auto;
-      height: 100%;
-      box-sizing: border-box;
+      /*height: 100%;*/
+      /*box-sizing: border-box;*/
     }
     html {
-      height: 100%;
+      /*height: 100%;*/
     }
     body {
-      height: 100%;
+      /*height: 100%;*/
       background: white;
-      margin: 0px;
-      padding: 0px;
+      /*margin: 0px;*/
+      /*padding: 0px;*/
     }
     .js-sticky-header {
       background: white;
+      /*display: inline-block;*/
+      margin: 0; /* this cannot have a vertical margin; otherwise the margins will sometimes collapse, and the sticky headers will jump  */
     }
   </style>
   <script src="../lib/require.js"></script>
@@ -29,15 +31,23 @@
 <body>
 
 <div class="sticky-header-container">
+
   <h2 class="js-sticky-header">Classical logic</h2>
+
   <p>Classical logic describes statements that can be either true or false. Operations of classical logic are "not", "and", "or", "implies". Statements are derived from axioms or from previously derived statements ("theorems").</p>
+
   <h2 class="js-sticky-header">Intuitionistic logic</h2>
+
   <p>Intuitionistic logic logic describes statements that can be true, false, or not yet derived. Operations of intuitionistic logic are the same as in classical logic - "not", "and", "or", "implies". However, while proving theorems one cannot assume that every statement is necessarily either true or false.</p>
 
   <h2 class="js-sticky-header">Modal logic</h2>
+
   <p>The simplest version of modal logic adds to classical logic the operators "possibly true" and "necessarily true". More generally, modal logic introduces the idea that a statement can be true "under certain circumstances" and false otherwise. The notion of "circumstances" is made formal by introducing <i>labels</i>. Something is "necessarily true" if it is true under "all possible circumstances".</p>
+
   <h2 class="js-sticky-header">Temporal logic</h2>
+
   <p>Temporal logic is a particular case of modal logic where the "different circumstances" are just different moments of time. Time is discrete, and all available moments of time are numbered 0, 1, 2, ... A given statement can be true at one moment and false at another moment.</p>
+
 </div>
 
 <script>
