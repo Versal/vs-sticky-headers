@@ -5,29 +5,22 @@
   <title>Scrolling body with sticky headers</title>
   <style>
     .sticky-header-container {
-      width: 200px;
-      margin: auto;
-      /*height: 100%;*/
-      /*box-sizing: border-box;*/
-    }
-    html {
-      /*height: 100%;*/
+      background: white; /* important */
+      width: 200px;  /* this is just to show the scrolling behavior more easily */
+      margin: auto; /* this is just to show the scrolling behavior more easily */
     }
     body {
-      /*height: 100%;*/
-      background: white;
-      margin-top: 0px;
-      /*margin: 0px;*/
-      /*padding: 0px;*/
+      margin-top: 0px; /* important */
     }
     .js-sticky-header {
-      background: white;
-      /*display: inline-block;*/
-      margin: 0; /* this cannot have a vertical margin; otherwise the margins will sometimes collapse, and the sticky headers will jump  */
+      background: white; /* important */
+      margin: 0; /*  important! the sticky headers cannot have a vertical margin; otherwise the margins will sometimes collapse, and the sticky headers will jump erratically while scrolling */
     }
   </style>
+
   <script src="../lib/require.js"></script>
   <script src="../lib/config.js"></script>
+
 </head>
 <body>
 
@@ -50,6 +43,8 @@
   <p>Temporal logic is a particular case of modal logic where the "different circumstances" are just different moments of time. Time is discrete, and all available moments of time are numbered 0, 1, 2, ... A given statement can be true at one moment and false at another moment.</p>
 
 </div>
+<!--Add some padding:-->
+<div style="height: 800px; ">&nbsp;</div>
 
 <script>
   require(['vs-sticky','cdn.jquery'], function(VsSticky, $) {
