@@ -9,7 +9,9 @@ The module is loaded via `require.js` and depends on `underscore.js`, `jquery.js
 
 ## Usage
 
-* Create an HTML element containing all the sticky headers. This will be the "header container". This should not be the scrolling DOM container; the header container should move together with the headers while scrolling. Sticky headers will be stuck relative to the viewport.
+* Create an HTML element containing all the sticky headers. This will be the "header container". This should not be the scrolling DOM container; the header container should move together with the headers while scrolling.
+
+* Sticky headers will be stuck relative to the viewport (normally, this will be the `body` element). The viewport should have a _zero top margin_. A nonzero top margin will show at the top of the viewport, preventing the sticky header from occupying the top position. 
 
 * All sticky headers should be HTML elements _without vertical margins_ and should have solid color background, the same as the background of the surrounding area.
 
