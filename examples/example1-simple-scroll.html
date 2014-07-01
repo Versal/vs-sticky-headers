@@ -18,6 +18,11 @@
       background: white; /* important */
       margin: 0; /*  important! the sticky headers cannot have a vertical margin; otherwise the margins will sometimes collapse, and the sticky headers will jump erratically while scrolling */
     }
+    .sticky-header-container p {
+      margin: 0; /* same problem when margins are present: a gap appears at top */
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
   </style>
 
   <script src="../lib/require.js"></script>
@@ -27,6 +32,7 @@
 <body>
 
 <div class="sticky-header-container">
+
   <p>Mathematicians invented several kinds of formal logic, which are used in various domains of computer science.</p>
 
   <h2 class="js-sticky-header">Classical logic</h2>

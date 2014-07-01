@@ -32,11 +32,13 @@ var controller = new VsSticky($container, 'h3.my-sticky-header-selector');
 
 ## Troubleshooting 
 
-* Sticky headers will be stuck relative to the viewport (normally, this will be the `body` element). The viewport should have a _zero top margin_. A nonzero top margin will show at the top of the viewport, preventing the sticky header from occupying the top position. 
+* Sticky headers will be stuck relative to the viewport (normally, this will be the `body` element). The viewport should have a _zero top margin_. A nonzero top margin will create a gap at the top of the viewport, preventing the sticky header from occupying the top position properly.
+ 
+* Another reason for a gap is a non-sticky HTML element at the top of the sticky header container, e.g. a `p` element, that has a nonzero vertical margin.
 
 * All sticky headers should be HTML elements with a solid color background, the same as the background of the surrounding area. Otherwise parts of the document will remain visible beneath the sticky headers.
 
-* All sticky headers should have _zero vertical margins_. If sticky headers have nonzero vertical margins (e.g. an `h2` element), the typical result is that the vertical margins will sometimes collapse, leading to erratic or jumping behavior of the sticky headers while scrolling.
+* All sticky headers should have _zero vertical margins_. All HTML elements _before_ the first sticky header should also have zero vertical margins. If sticky headers (or some elements before them) have nonzero vertical margins (e.g. an `h2` element or a `p` element that have default vertical margins), the typical result is that the vertical margins will sometimes collapse, leading to erratic or jumping behavior of the sticky headers while scrolling. Use zero vertical margins and nonzero padding, for the desired effect (padding creates non-collapsible margins).
 
 
 ## Example
