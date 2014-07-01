@@ -7,20 +7,21 @@
     return VsSticky = (function() {
       VsSticky.prototype.STUCK_Z_INDEX = 98;
 
-      function VsSticky($container, selector) {
+      function VsSticky($container, selector, $scrollContainer) {
         this.$container = $container;
         this.selector = selector != null ? selector : '.js-sticky-header';
+        this.$scrollContainer = $scrollContainer != null ? $scrollContainer : $(window);
         this._watchContainer = __bind(this._watchContainer, this);
         this._scroll = __bind(this._scroll, this);
         this.scanContainer();
         this._throttledScroll = _.throttle(this._scroll, 10);
-        $(window).on('scroll', this._throttledScroll);
+        this.$scrollContainer.on('scroll', this._throttledScroll);
         this._watchInterval = setInterval(this._watchContainer, 730);
       }
 
       VsSticky.prototype.destroy = function() {
         this._changeCurrentSection(null);
-        $(window).off('scroll', this._throttledScroll);
+        this.$scrollContainer.off('scroll', this._throttledScroll);
         return clearInterval(this._watchInterval);
       };
 
@@ -76,8 +77,9 @@
       };
 
       VsSticky.prototype._scroll = function() {
-        var cutoff;
-        cutoff = $(window).scrollTop() + this._containerTop;
+        var cutoff, _ref;
+        cutoff = this.$scrollContainer.scrollTop() + this._containerTop;
+        console.log('scroll: cutoff=' + cutoff + ', containerTop=' + this._containerTop + ', scrollTop=' + this.$scrollContainer.scrollTop() + ', container.top=' + ((_ref = this.$scrollContainer.offset()) != null ? _ref.top : void 0));
         if (!this._inCurrentSection(cutoff)) {
           this._changeCurrentSection(this._findSectionByCutoff(cutoff));
         }

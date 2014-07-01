@@ -5,24 +5,24 @@ define [
   class VsSticky
     STUCK_Z_INDEX: 98 # above .gadget-drop-target as defined in lesson.styl
 
-    constructor: (@$container, @selector = '.js-sticky-header') ->
+    constructor: (@$container, @selector = '.js-sticky-header', @$scrollContainer = $(window)) ->
       @scanContainer()
 
       @_throttledScroll = _.throttle @_scroll, 10
 #      // note: the scroll container must be the active one. By default, this is "window", but this won't work if we put overflow=... on another element.
       # in that case, we would have to add another argument to the constructor, to pass the active scroll container.
       # On the other hand, the "container" argument must be a DOM element that scrolls together with the headers; not the scroll container.
-      $(window).on 'scroll', @_throttledScroll
+      @$scrollContainer.on 'scroll', @_throttledScroll
       @_watchInterval = setInterval @_watchContainer, 730
 
     destroy: ->
       @_changeCurrentSection null
 
-      $(window).off 'scroll', @_throttledScroll
+      @$scrollContainer.off 'scroll', @_throttledScroll
       clearInterval @_watchInterval
 
     scanContainer: ->
-      @_containerTop = @$container.offset().top
+      @_containerTop = @$container.offset().top #- @$scrollContainer.offset().top
       @_containerHeight = @$container.height()
 
       @_changeCurrentSection null
@@ -62,8 +62,8 @@ define [
       section.$header.css 'top', effectiveHeaderOffset
 
     _scroll: =>
-      cutoff = $(window).scrollTop() + @_containerTop #y-position of top of lesson
-
+      cutoff = @$scrollContainer.scrollTop() + @_containerTop #y-position of top of lesson
+      console.log 'scroll: cutoff=' + cutoff + ', containerTop=' + @_containerTop + ', scrollTop=' + @$scrollContainer.scrollTop() + ', container.top=' + @$scrollContainer.offset()?.top
       unless @_inCurrentSection cutoff
         @_changeCurrentSection @_findSectionByCutoff cutoff
 
