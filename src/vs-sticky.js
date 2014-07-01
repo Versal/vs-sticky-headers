@@ -2,10 +2,10 @@
 (function() {
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  window.VsSticky = (function() {
-    VsSticky.prototype.STUCK_Z_INDEX = 98;
+  window.StickyHeaders = (function() {
+    StickyHeaders.prototype.STUCK_Z_INDEX = 98;
 
-    function VsSticky($container, selector) {
+    function StickyHeaders($container, selector) {
       this.$container = $container;
       this.selector = selector != null ? selector : '.js-sticky-header';
       this._watchContainer = __bind(this._watchContainer, this);
@@ -16,13 +16,13 @@
       this._watchInterval = setInterval(this._watchContainer, 730);
     }
 
-    VsSticky.prototype.destroy = function() {
+    StickyHeaders.prototype.destroy = function() {
       this._changeCurrentSection(null);
       $(window).off('scroll', this._throttledScroll);
       return clearInterval(this._watchInterval);
     };
 
-    VsSticky.prototype.scanContainer = function() {
+    StickyHeaders.prototype.scanContainer = function() {
       var $header, $headers, i, prevSection, _i, _ref, _ref1;
       this._containerTop = this.$container.offset().top;
       this._containerHeight = this.$container.height();
@@ -50,20 +50,20 @@
       return this._scroll();
     };
 
-    VsSticky.prototype._inCurrentSection = function(y) {
+    StickyHeaders.prototype._inCurrentSection = function(y) {
       if (this._currentSection == null) {
         return false;
       }
       return (this._currentSection.top <= y && y < this._currentSection.bottom);
     };
 
-    VsSticky.prototype._findSectionByCutoff = function(y) {
+    StickyHeaders.prototype._findSectionByCutoff = function(y) {
       return _.find(this._sections, function(section) {
         return (section.top <= y && y < section.bottom);
       });
     };
 
-    VsSticky.prototype._setHeaderOffset = function(section, y) {
+    StickyHeaders.prototype._setHeaderOffset = function(section, y) {
       var effectiveHeaderOffset, headerOffset;
       if (this._currentSection == null) {
         return;
@@ -73,7 +73,7 @@
       return section.$header.css('top', effectiveHeaderOffset);
     };
 
-    VsSticky.prototype._scroll = function() {
+    StickyHeaders.prototype._scroll = function() {
       var cutoff;
       cutoff = $(window).scrollTop() + this._containerTop;
       if (!this._inCurrentSection(cutoff)) {
@@ -82,7 +82,7 @@
       return this._setHeaderOffset(this._currentSection, cutoff);
     };
 
-    VsSticky.prototype._changeCurrentSection = function(section) {
+    StickyHeaders.prototype._changeCurrentSection = function(section) {
       if (this._currentSection != null) {
         this._unwrap(this._currentSection);
       }
@@ -92,7 +92,7 @@
       return this._currentSection = section;
     };
 
-    VsSticky.prototype._wrap = function(section) {
+    StickyHeaders.prototype._wrap = function(section) {
       var placeholder;
       section.$header.css({
         left: section.$header.offset().left,
@@ -106,17 +106,17 @@
       });
     };
 
-    VsSticky.prototype._unwrap = function(section) {
+    StickyHeaders.prototype._unwrap = function(section) {
       return section.$header.removeAttr('style').unwrap();
     };
 
-    VsSticky.prototype._watchContainer = function() {
+    StickyHeaders.prototype._watchContainer = function() {
       if (this._containerTop !== this.$container.offset().top || this._containerHeight !== this.$container.height()) {
         return this.scanContainer();
       }
     };
 
-    return VsSticky;
+    return StickyHeaders;
 
   })();
 

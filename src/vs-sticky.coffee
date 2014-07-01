@@ -1,4 +1,4 @@
-class window.VsSticky
+class window.StickyHeaders
   STUCK_Z_INDEX: 98 # above .gadget-drop-target as defined in lesson.styl
 
   constructor: (@$container, @selector = '.js-sticky-header') ->

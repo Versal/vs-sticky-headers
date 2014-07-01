@@ -36,7 +36,7 @@ describe "VsSticky", () ->
     chai.expect(header2PositionTopOld).to.equal 200
 
   it "sets position on top of document upon scrolling to next section", (done) ->
-    vsSticky = new VsSticky($('.sticky-header-container'))
+    vsSticky = new StickyHeaders($('.sticky-header-container'))
     $(window).scrollTop(250);
     _.defer ->
       header2PositionTop = $('#header2').position().top
@@ -44,7 +44,7 @@ describe "VsSticky", () ->
       done()
 
   it "sets position on top of document and moves out sticky header upon partial scrolling to next section", (done) ->
-    vsSticky = new VsSticky($('.sticky-header-container'))
+    vsSticky = new StickyHeaders($('.sticky-header-container'))
     $(window).scrollTop(350);
     _.defer ->
       header2PositionTop = $('#header2').position().top
