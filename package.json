@@ -1,0 +1,17 @@
+{
+  "name": "versal-iframe-launcher",
+  "version": "0.2.3",
+  "scripts": {
+    "test": "karma start --browsers Firefox --single-run"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "karma": "*",
+    "karma-cli": "*",
+    "karma-chai": "*",
+    "karma-firefox-launcher": "*",
+    "karma-mocha": "*",
+    "mocha": "*",
+    "karma-coffee-preprocessor": "~0.2.1"
+  }
+}

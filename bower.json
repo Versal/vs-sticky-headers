@@ -1,0 +1,21 @@
+{
+  "name": "vs-sticky-headers",
+  "version": "0.1.0",
+  "author": "Versal team <support@versal.com>",
+  "description": "Support for sticky headers used in the Versal player",
+  "main": "src/vs-sticky.js",
+  "license": "MIT",
+  "homepage": "http://github.com/Versal/vs-sticky-headers",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "package.json"
+  ],
+  "devDependencies": {},
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "underscore": "~1.6.0"
+  }
+}
