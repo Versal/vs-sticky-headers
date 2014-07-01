@@ -4,7 +4,7 @@ module.exports = function(config) {
     files: [
       'bower_components/jquery/dist/jquery.min.js',
       'bower_components/underscore/underscore.js',
-      'src/vs-sticky.coffee',
+      'src/vs-sticky.js',
       'test/*_spec.coffee'
     ],
     preprocessors: {

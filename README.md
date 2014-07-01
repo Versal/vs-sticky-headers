@@ -3,9 +3,24 @@ Implementation of sticky headers
 
 The `vs-sticky` module implements sticky headers.
 
-## Requirements
+## Installation
 
-The module is loaded via `require.js` and depends on `underscore.js`, `jquery.js`.
+```
+npm install
+bower install
+```
+
+## Build
+
+```
+npm run build
+```
+
+## Testing
+
+```
+npm test
+```
 
 ## Usage
 

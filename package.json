@@ -2,6 +2,7 @@
   "name": "versal-iframe-launcher",
   "version": "0.2.3",
   "scripts": {
+    "build": "coffee -c src/vs-sticky.coffee",
     "test": "karma start --browsers Firefox --single-run"
   },
   "devDependencies": {
@@ -12,6 +13,7 @@
     "karma-firefox-launcher": "*",
     "karma-mocha": "*",
     "mocha": "*",
-    "karma-coffee-preprocessor": "~0.2.1"
+    "karma-coffee-preprocessor": "*",
+    "coffee-script": "*"
   }
 }
