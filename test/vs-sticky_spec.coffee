@@ -24,8 +24,6 @@ describe "VsSticky", () ->
         <div class="vertical-padding"></div>
         <div id="header3" class="sticky-header-padding js-sticky-header">header3</div>
         <div class="vertical-padding"></div>
-        <div id="header4" class="sticky-header-padding js-sticky-header">header4</div>
-        <div class="vertical-padding"></div>
 
       </div>
       """
@@ -37,10 +35,19 @@ describe "VsSticky", () ->
     header2PositionTopOld = $('#header2').position().top
     chai.expect(header2PositionTopOld).to.equal 200
 
-  it "wraps sticky header upon scroll", (done) ->
+  it "sets position on top of document upon scrolling to next section", (done) ->
+    vsSticky = new VsSticky($('.sticky-header-container'))
+    $(window).scrollTop(250);
+    _.defer ->
+      header2PositionTop = $('#header2').position().top
+      chai.expect(header2PositionTop).to.equal 0
+      done()
+
+  it "sets position on top of document and moves out sticky header upon partial scrolling to next section", (done) ->
     vsSticky = new VsSticky($('.sticky-header-container'))
     $(window).scrollTop(350);
     _.defer ->
       header2PositionTop = $('#header2').position().top
       chai.expect(header2PositionTop).to.equal -50
       done()
+
