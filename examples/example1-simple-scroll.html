@@ -2,12 +2,14 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <title>Scrolling body with sticky headers</title>
+  <title>Sticky headers while scrolling the document body</title>
   <style>
     .sticky-header-container {
       background: white; /* important */
       width: 200px;  /* this is just to show the scrolling behavior more easily */
-      margin: auto; /* this is just to show the scrolling behavior more easily */
+      margin-left: auto; margin-right: auto; /* this is just to show the scrolling behavior more easily */
+      position: relative;
+      z-index: 0;
     }
     body {
       margin-top: 0px; /* important */
@@ -25,6 +27,7 @@
 <body>
 
 <div class="sticky-header-container">
+  <p>Mathematicians invented several kinds of formal logic, which are used in various domains of computer science.</p>
 
   <h2 class="js-sticky-header">Classical logic</h2>
 
@@ -32,7 +35,8 @@
 
   <h2 class="js-sticky-header">Intuitionistic logic</h2>
 
-  <p>Intuitionistic logic logic describes statements that can be true, false, or not yet derived. Operations of intuitionistic logic are the same as in classical logic - "not", "and", "or", "implies". However, while proving theorems one cannot assume that every statement is necessarily either true or false.</p>
+  <p>Intuitionistic logic logic describes statements that can be true, false, or undecided (not yet proved). Operations of intuitionistic logic are the same as in classical logic - "not", "and", "or", "implies". However, while proving theorems one cannot assume that every statement is necessarily either true or false. So proofs by contradiction are not admissible; all proofs must be "constructive".</p>
+  <p>As an example, suppose we wanted to prove that if <i>n</i><sup>2</sup> is odd then <i>n</i> is also odd, for any integer <i>n</i>. A proof in classical logic is simple: if <i>n</i> were <i>not</i> odd then <i>n</i><sup>2</sup> would have been even, which contradicts the given condition that <i>n</i><sup>2</sup> is odd. However, this proof is not admissible in intuitionistic logic. Instead, we have to prove this statement "constructively" by taking the given odd number <i>n</i><sup>2</sup>, obtaining the corresponding <i>n</i> by actually computing the square root of <i>n</i><sup>2</sup>, and then proving that the resulting value of <i>n</i> is odd.</p>
 
   <h2 class="js-sticky-header">Modal logic</h2>
 
